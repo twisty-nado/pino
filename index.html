@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>pino</title>
+    <script src="Tone.js"></script>
+    <style>
+      @font-face {
+        font-family: FNT;
+        src: url("fnt/MS\ Sans\ Serif.ttf");
+      }
+
+      body{
+        background-color: #111111;
+        font-family: FNT;
+        user-select: none;
+        text-shadow: 0 0 8px black;
+      }
+
+      button{
+        color: black;
+        background-color: white;
+        font-weight: bolder;
+        font-family: FNT;
+        vertical-align: top;
+        box-shadow:  0 0 8px 0 black;
+      }
+
+      #piano{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #note1{
+        border: none;
+        width: 50px;
+        height: 250px;
+        transition: 0.3s;
+      }
+
+      #note2{
+        border: none;
+        width: 50px;
+        height: 250px;
+        transition: 0.3s;
+      }
+
+      #note3{
+        border: none;
+        width: 50px;
+        height: 250px;
+        transition: 0.3s;
+      }
+
+      #note1:hover{
+        background-color: lightgray;
+      }
+
+      #note2:hover{
+        background-color: lightgray;
+      }
+
+      #note3:hover{
+        background-color: lightgray;
+      }
+
+      #note4{
+        border: none;
+        width: 50px;
+        height: 250px;
+        transition: 0.3s;
+      }
+
+      #note5{
+        border: none;
+        width: 50px;
+        height: 250px;
+        transition: 0.3s;
+      }
+
+      #note6{
+        border: none;
+        width: 50px;
+        height: 250px;
+        transition: 0.3s;
+      }
+
+      #note4:hover{
+        background-color: lightgray;
+      }
+
+      #note5:hover{
+        background-color: lightgray;
+      }
+
+      #note6:hover{
+        background-color: lightgray;
+      }
+
+      #note7{
+        border: none;
+        width: 50px;
+        height: 250px;
+        transition: 0.3s;
+      }
+
+      #note8{
+        border: none;
+        width: 50px;
+        height: 250px;
+        transition: 0.3s;
+      }
+
+      #note7:hover{
+        background-color: lightgray;
+      }
+
+      #note8:hover{
+        background-color: lightgray;
+      }
+
+      #note1_5{
+        border: none;
+        width: 50px;
+        height: 100px;
+        transition: 0.3s;
+        background-color: #333333;
+        color: white;
+      }
+
+      #note2_5{
+        border: none;
+        width: 50px;
+        height: 100px;
+        transition: 0.3s;
+        background-color: #333333;
+        color: white;
+      }
+
+      #note4_5{
+        border: none;
+        width: 50px;
+        height: 100px;
+        transition: 0.3s;
+        background-color: #333333;
+        color: white;
+      }
+
+      #note1_5:hover{
+        background-color: gray;
+      }
+
+      #note2_5:hover{
+        background-color: gray;
+      }
+
+      #note4_5:hover{
+        background-color: gray;
+      }
+
+      #note5_5{
+        border: none;
+        width: 50px;
+        height: 100px;
+        transition: 0.3s;
+        background-color: #333333;
+        color: white;
+      }
+
+      #note6_5{
+        background-color: #333333;
+        color: white;
+        border: none;
+        width: 50px;
+        height: 100px;
+        transition: 0.3s;
+      }
+
+      #note5_5:hover{
+        background-color: gray;
+      }
+
+      #note6_5:hover{
+        background-color: gray;
+      }
+
+      .active{
+        transform: rotateX(15deg) perspective(3000px) scale(95%);
+        background-color: lightgray;
+        transform-origin: top;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -125%); z-index: 5;">
+      <div style="position: absolute; left: -105px;">
+        <button id="note1_5" onclick="note1_5()">2 <i>(C#)</i></button>
+        <button id="note2_5" onclick="note2_5()">3 <i>(D#)</i></button>
+      </div>
+      <div style="position: relative; left: 52.5px;">
+        <button id="note4_5" onclick="note4_5()">5 <i>(F#)</i></button>
+        <button id="note5_5" onclick="note5_5()">6 <i>(G#)</i></button>
+        <button id="note6_5" onclick="note6_5()">7 <i>(A#)</i></button>
+      </div>
+    </div>
+
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      <button id="note1" onclick="note1()">Q <i>(C)</i></button>
+      <button id="note2" onclick="note2()">W <i>(D)</i></button>
+      <button id="note3" onclick="note3()">E <i>(E)</i></button>
+      <button id="note4" onclick="note4()">R <i>(F)</i></button>
+      <button id="note5" onclick="note5()">T <i>(G)</i></button>
+      <button id="note6" onclick="note6()">Y <i>(A)</i></button>
+      <button id="note7" onclick="note7()">U <i>(B)</i></button>
+      <button id="note8" onclick="note8()">I <i>(C)</i></button>
+    </div>
+
+    <script>
+            //create a synth and connect it to the main output (your speakers)
+      const synth = new Tone.Synth().toDestination();
+
+      function note1(){
+        synth.triggerAttackRelease("C4", "8n")
+        document.getElementById("note1").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note1").classList.remove("active");
+          }, 200)
+      }
+      function note2(){
+        synth.triggerAttackRelease("D4", "8n")
+        document.getElementById("note2").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note2").classList.remove("active");
+          }, 200)
+      }
+      function note3(){
+        synth.triggerAttackRelease("E4", "8n")
+        document.getElementById("note3").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note3").classList.remove("active");
+          }, 200)
+      }
+      function note4(){
+        synth.triggerAttackRelease("F4", "8n")
+        document.getElementById("note4").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note4").classList.remove("active");
+          }, 200)
+      }
+      function note5(){
+        synth.triggerAttackRelease("G4", "8n")
+        document.getElementById("note5").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note5").classList.remove("active");
+          }, 200)
+      }
+      function note6(){
+        synth.triggerAttackRelease("A4", "8n")
+        document.getElementById("note6").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note6").classList.remove("active");
+          }, 200)
+      }
+      function note7(){
+        synth.triggerAttackRelease("B4", "8n")
+        document.getElementById("note7").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note7").classList.remove("active");
+          }, 200)
+      }
+      function note8(){
+        synth.triggerAttackRelease("C5", "8n")
+        document.getElementById("note8").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note8").classList.remove("active");
+          }, 200)
+      }
+
+      function note1_5(){
+        synth.triggerAttackRelease("C#4", "8n")
+        document.getElementById("note1_5").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note1_5").classList.remove("active");
+          }, 200)
+      }
+      function note2_5(){
+        synth.triggerAttackRelease("D#4", "8n")
+        document.getElementById("note2_5").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note2_5").classList.remove("active");
+          }, 200)
+      }
+      function note4_5(){
+        synth.triggerAttackRelease("F#4", "8n")
+        document.getElementById("note4_5").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note4_5").classList.remove("active");
+          }, 200)
+      }
+      function note5_5(){
+        synth.triggerAttackRelease("G#4", "8n")
+        document.getElementById("note5_5").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note5_5").classList.remove("active");
+          }, 200)
+      }
+      function note6_5(){
+        synth.triggerAttackRelease("A#4", "8n")
+        document.getElementById("note6_5").classList.add("active");
+          setTimeout(function(){
+            document.getElementById("note6_5").classList.remove("active");
+          }, 200)
+      }
+      
+      addEventListener('keydown', noteKey);
+
+      function noteKey(e) {
+        if (e.code == "KeyQ"){
+          note1();
+        } else if (e.code == "KeyW") {
+          note2();
+        } else if (e.code == "KeyE") {
+          note3();
+        } else if (e.code == "KeyR") {
+          note4();
+        } else if (e.code == "KeyT") {
+          note5();
+        } else if (e.code == "KeyY") {
+          note6();
+        } else if (e.code == "KeyU") {
+          note7();
+        } else if (e.code == "KeyI") {
+          note8();
+        } else if (e.code == "KeyI") {
+          note8();
+        } else if (e.code == "Digit2") {
+          note1_5();
+        } else if (e.code == "Digit3") {
+          note2_5();
+        } else if (e.code == "Digit5") {
+          note4_5();
+        } else if (e.code == "Digit6") {
+          note5_5();
+        } else if (e.code == "Digit7") {
+          note6_5();
+        }
+      }
+
+    </script>
+
+    <p style="color: white; position: absolute; right: 24px; bottom: 0;">Copyright(R) Twisty Nado 2022.<br /> Do not copy without permission.</p>
+  </body>
+</html>
