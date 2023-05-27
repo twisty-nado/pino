@@ -34,134 +34,18 @@
         transform: translate(-50%, -50%);
       }
 
-      #note1{
+      #note{
         border: none;
         width: 50px;
         height: 250px;
         transition: 0.3s;
       }
 
-      #note2{
-        border: none;
-        width: 50px;
-        height: 250px;
-        transition: 0.3s;
-      }
-
-      #note3{
-        border: none;
-        width: 50px;
-        height: 250px;
-        transition: 0.3s;
-      }
-
-      #note1:hover{
-        background-color: lightgray;
-      }
-
-      #note2:hover{
-        background-color: lightgray;
-      }
-
-      #note3:hover{
-        background-color: lightgray;
-      }
-
-      #note4{
-        border: none;
-        width: 50px;
-        height: 250px;
-        transition: 0.3s;
-      }
-
-      #note5{
-        border: none;
-        width: 50px;
-        height: 250px;
-        transition: 0.3s;
-      }
-
-      #note6{
-        border: none;
-        width: 50px;
-        height: 250px;
-        transition: 0.3s;
-      }
-
-      #note4:hover{
-        background-color: lightgray;
-      }
-
-      #note5:hover{
-        background-color: lightgray;
-      }
-
-      #note6:hover{
-        background-color: lightgray;
-      }
-
-      #note7{
-        border: none;
-        width: 50px;
-        height: 250px;
-        transition: 0.3s;
-      }
-
-      #note8{
-        border: none;
-        width: 50px;
-        height: 250px;
-        transition: 0.3s;
-      }
-
-      #note7:hover{
-        background-color: lightgray;
-      }
-
-      #note8:hover{
-        background-color: lightgray;
-      }
-
-      #note1_5{
-        border: none;
-        width: 50px;
-        height: 100px;
-        transition: 0.3s;
-        background-color: #333333;
-        color: white;
-      }
-
-      #note2_5{
-        border: none;
-        width: 50px;
-        height: 100px;
-        transition: 0.3s;
-        background-color: #333333;
-        color: white;
-      }
-
-      #note4_5{
-        border: none;
-        width: 50px;
-        height: 100px;
-        transition: 0.3s;
-        background-color: #333333;
-        color: white;
-      }
-
-      #note1_5:hover{
+      #note:hover{
         background-color: gray;
       }
 
-      #note2_5:hover{
-        background-color: gray;
-      }
-
-      #note4_5:hover{
-        background-color: gray;
-      }
-
-      #note5_5{
+      #note_5{
         border: none;
         width: 50px;
         height: 100px;
@@ -170,20 +54,7 @@
         color: white;
       }
 
-      #note6_5{
-        background-color: #333333;
-        color: white;
-        border: none;
-        width: 50px;
-        height: 100px;
-        transition: 0.3s;
-      }
-
-      #note5_5:hover{
-        background-color: gray;
-      }
-
-      #note6_5:hover{
+      #note_5:hover{
         background-color: gray;
       }
 
@@ -198,123 +69,123 @@
   <body>
 
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -125%); z-index: 5;">
-      <div style="position: absolute; left: -105px;">
-        <button id="note1_5" onclick="note1_5()">2 <i>(C#)</i></button>
-        <button id="note2_5" onclick="note2_5()">3 <i>(D#)</i></button>
+      <div style="position: absolute; left: -211px; display: inline-block;">
+        <button id="note_5" onclick="note1_5()">2 <i>(C#)</i></button>
+        <button id="note_5" onclick="note2_5()">3 <i>(D#)</i></button>
       </div>
-      <div style="position: relative; left: 52.5px;">
-        <button id="note4_5" onclick="note4_5()">5 <i>(F#)</i></button>
-        <button id="note5_5" onclick="note5_5()">6 <i>(G#)</i></button>
-        <button id="note6_5" onclick="note6_5()">7 <i>(A#)</i></button>
+      <div style="position: relative; left: -52.5px; display: inline-block;">
+        <button id="note_5" onclick="note4_5()">5 <i>(F#)</i></button>
+        <button id="note_5" onclick="note5_5()">6 <i>(G#)</i></button>
+        <button id="note_5" onclick="note6_5()">7 <i>(A#)</i></button>
+      </div>
+      <div style="position: absolute; left: 158px; display: inline-block;">
+        <button id="note_5" onclick="note7_5()">9 <i>(C#)</i></button>
+        <button id="note_5" onclick="note8_5()">0 <i>(D#)</i></button>
+      </div>
+      <div style="position: relative; left: 158px; display: inline-block;">
+        <button id="note_5" onclick="note9_5()">= <i>(F#)</i></button>
+        <button id="note_5" onclick="note10_5()">BCKSPC <i>(G#)</i></button>
+        <button id="note_5" onclick="note11_5()">NUM/ <i>(A#)</i></button>
       </div>
     </div>
 
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-      <button id="note1" onclick="note1()">Q <i>(C)</i></button>
-      <button id="note2" onclick="note2()">W <i>(D)</i></button>
-      <button id="note3" onclick="note3()">E <i>(E)</i></button>
-      <button id="note4" onclick="note4()">R <i>(F)</i></button>
-      <button id="note5" onclick="note5()">T <i>(G)</i></button>
-      <button id="note6" onclick="note6()">Y <i>(A)</i></button>
-      <button id="note7" onclick="note7()">U <i>(B)</i></button>
-      <button id="note8" onclick="note8()">I <i>(C)</i></button>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: inline-block;">
+      <button id="note" onclick="note1()">Q <i>(C)</i></button>
+      <button id="note" onclick="note2()">W <i>(D)</i></button>
+      <button id="note" onclick="note3()">E <i>(E)</i></button>
+      <button id="note" onclick="note4()">R <i>(F)</i></button>
+      <button id="note" onclick="note5()">T <i>(G)</i></button>
+      <button id="note" onclick="note6()">Y <i>(A)</i></button>
+      <button id="note" onclick="note7()">U <i>(B)</i></button>
+      <button id="note" onclick="note8()">I <i>(C)</i></button>
+      <button id="note" onclick="note9()">O <i>(D)</i></button>
+      <button id="note" onclick="note10()">P <i>(E)</i></button>
+      <button id="note" onclick="note11()">[ <i>(F)</i></button>
+      <button id="note" onclick="note12()">] <i>(G)</i></button>
+      <button id="note" onclick="note13()">NUM7 <i>(A)</i></button>
+      <button id="note" onclick="note14()">NUM8 <i>(B)</i></button>
+      <button id="note" onclick="note15()">NUM9 <i>(C)</i></button>
     </div>
 
     <script>
             //create a synth and connect it to the main output (your speakers)
-      const synth = new Tone.Synth().toDestination();
+      const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
       function note1(){
         synth.triggerAttackRelease("C4", "8n")
-        document.getElementById("note1").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note1").classList.remove("active");
-          }, 200)
       }
       function note2(){
         synth.triggerAttackRelease("D4", "8n")
-        document.getElementById("note2").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note2").classList.remove("active");
-          }, 200)
       }
       function note3(){
         synth.triggerAttackRelease("E4", "8n")
-        document.getElementById("note3").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note3").classList.remove("active");
-          }, 200)
       }
       function note4(){
         synth.triggerAttackRelease("F4", "8n")
-        document.getElementById("note4").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note4").classList.remove("active");
-          }, 200)
       }
       function note5(){
         synth.triggerAttackRelease("G4", "8n")
-        document.getElementById("note5").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note5").classList.remove("active");
-          }, 200)
       }
       function note6(){
         synth.triggerAttackRelease("A4", "8n")
-        document.getElementById("note6").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note6").classList.remove("active");
-          }, 200)
       }
       function note7(){
         synth.triggerAttackRelease("B4", "8n")
-        document.getElementById("note7").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note7").classList.remove("active");
-          }, 200)
       }
       function note8(){
         synth.triggerAttackRelease("C5", "8n")
-        document.getElementById("note8").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note8").classList.remove("active");
-          }, 200)
+      }
+      function note9(){
+        synth.triggerAttackRelease("D5", "8n")
+      }
+      function note10(){
+        synth.triggerAttackRelease("E5", "8n")
+      }
+      function note11(){
+        synth.triggerAttackRelease("F5", "8n")
+      }
+      function note12(){
+        synth.triggerAttackRelease("G5", "8n")
+      }
+      function note13(){
+        synth.triggerAttackRelease("A5", "8n")
+      }
+      function note14(){
+        synth.triggerAttackRelease("B5", "8n")
+      }
+      function note15(){
+        synth.triggerAttackRelease("C6", "8n")
       }
 
       function note1_5(){
         synth.triggerAttackRelease("C#4", "8n")
-        document.getElementById("note1_5").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note1_5").classList.remove("active");
-          }, 200)
       }
       function note2_5(){
         synth.triggerAttackRelease("D#4", "8n")
-        document.getElementById("note2_5").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note2_5").classList.remove("active");
-          }, 200)
       }
       function note4_5(){
         synth.triggerAttackRelease("F#4", "8n")
-        document.getElementById("note4_5").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note4_5").classList.remove("active");
-          }, 200)
       }
       function note5_5(){
         synth.triggerAttackRelease("G#4", "8n")
-        document.getElementById("note5_5").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note5_5").classList.remove("active");
-          }, 200)
       }
       function note6_5(){
         synth.triggerAttackRelease("A#4", "8n")
-        document.getElementById("note6_5").classList.add("active");
-          setTimeout(function(){
-            document.getElementById("note6_5").classList.remove("active");
-          }, 200)
+      }
+      function note7_5(){
+        synth.triggerAttackRelease("C#5", "8n")
+      }
+      function note8_5(){
+        synth.triggerAttackRelease("D#5", "8n")
+      }
+      function note9_5(){
+        synth.triggerAttackRelease("F#5", "8n")
+      }
+      function note10_5(){
+        synth.triggerAttackRelease("G#5", "8n")
+      }
+      function note11_5(){
+        synth.triggerAttackRelease("A#5", "8n")
       }
       
       addEventListener('keydown', noteKey);
@@ -336,8 +207,20 @@
           note7();
         } else if (e.code == "KeyI") {
           note8();
-        } else if (e.code == "KeyI") {
-          note8();
+        } else if (e.code == "KeyO") {
+          note9();
+        } else if (e.code == "KeyP") {
+          note10();
+        } else if (e.code == "BracketLeft") {
+          note11();
+        } else if (e.code == "BracketRight") {
+          note12();
+        } else if (e.code == "Numpad7") {
+          note13();
+        } else if (e.code == "Numpad8") {
+          note14();
+        } else if (e.code == "Numpad9") {
+          note15();
         } else if (e.code == "Digit2") {
           note1_5();
         } else if (e.code == "Digit3") {
@@ -348,11 +231,21 @@
           note5_5();
         } else if (e.code == "Digit7") {
           note6_5();
+        } else if (e.code == "Digit9") {
+          note7_5();
+        } else if (e.code == "Digit0") {
+          note8_5();
+        } else if (e.code == "Equal") {
+          note9_5();
+        } else if (e.code == "Backspace") {
+          note10_5();
+        } else if (e.code == "NumpadMultiply") {
+          note11_5();
         }
       }
 
     </script>
 
-    <p style="color: white; position: absolute; right: 24px; bottom: 0;">Copyright(R) Twisty Nado 2022.<br /> Do not copy without permission.</p>
+    <p style="color: white; position: absolute; right: 24px; bottom: 0; text-align: right;">Copyright(R) Twisty Nado 2022-20XX.<br />This project is open source! <a href="https://github.com/twistynado-official/pino">Download</a></p>
   </body>
 </html>
